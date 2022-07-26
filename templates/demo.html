@@ -7,8 +7,8 @@
     </h1>
 
     <div hx-get="{{ url_for("state_list_results") }}"
-         hx-trigger="load, keyup from:#search delay:50ms, valueChange.mdb.select from:#search-type"
-         hx-include="#search, #search-type"
+         hx-trigger="load, keyup from:#search delay:50ms, valueChange.mdb.select from:#search-type, reload-states from:document"
+         hx-include="#search, #search-type, [data-state-search]"
          hx-target="#list-results"
          hx-sync="this:replace">
     </div>
@@ -22,13 +22,23 @@
             <input id="search"
                    name="search"
                    type="text"
-                   placeholder="Filter results">
+                   placeholder="Filter results"
+                   data-state-search>
+
+            <script type="text/javascript">
+                var searchElement = document.getElementById("search");
+
+                searchElement.addEventListener("input", () => {
+                    document.dispatchEvent(new Event("reload-states"));
+                });
+            </script>
         </div>
 
         <div>
             <select id="search-type"
                     name="search-type"
-                    class="select">
+                    class="select"
+                    data-state-search>
                 <option value="Contain">
                      Contain
                 </option>
@@ -52,7 +62,7 @@
                 var searchTypeSelect = new mdb.Select(searchTypeSelectElement);
 
                 searchTypeSelectElement.addEventListener("valueChange.mdb.select", () => {
-                    document.dispatchEvent(new Event("reload-results"));
+                    document.dispatchEvent(new Event("reload-states"));
                 });
             </script>
         </div>
