@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="htmx-config"
+          content='{"defaultSettleDelay":0}'>
+
+    <title id="page-title">
+        ROSALIND
+    </title>
+
+    <!-- Htmx -->
+    <script src="https://unpkg.com/htmx.org@1.7.0"
+            crossorigin="anonymous"></script>
+
+    <!-- MDB5 CSS -->
+    <link href="/static/css/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap icon font -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com"
+          rel="preconnect">
+
+    <link href="https://fonts.gstatic.com"
+          rel="preconnect"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,400&display=swap"
+          rel="stylesheet">
+
+    <style>
+        .htmx-indicator {
+            opacity: 1 !important;
+            display: none !important;
+            height: 25px;
+            width: 25px;
+        }
+
+        .htmx-request.htmx-indicator {
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- MDB5  JS -->
+<script type="text/javascript" src="/static/js/mdb.min.js"></script>
+
+<!-- Dayjs for timezone-aware datetimes -->
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+<!-- D3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+
+<script type="text/javascript">
+    document.body.addEventListener("htmx:responseError", function (evt) {
+        alert(evt);
+    });
+</script>
+
+<div class="p-4">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

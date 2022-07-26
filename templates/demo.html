@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>
+        Demo
+    </h1>
+
+    <div hx-get="{{ url_for("state_list_results") }}"
+         hx-trigger="load, keyup from:#search delay:50ms, valueChange.mdb.select from:#search-type"
+         hx-include="#search, #search-type"
+         hx-target="#list-results"
+         hx-sync="this:replace">
+    </div>
+
+    <div class="d-flex gap-3">
+        <div>
+            <label for="search">
+                Search
+            </label>
+
+            <input id="search"
+                   name="search"
+                   type="text"
+                   placeholder="Filter results">
+        </div>
+
+        <div>
+            <select id="search-type"
+                    name="search-type"
+                    class="select">
+                <option value="Contain">
+                     Contain
+                </option>
+
+                <option value="Start">
+                     Start
+                </option>
+
+                <option value="End">
+                     End
+                </option>
+            </select>
+
+            <label for="search-type"
+                   class="form-label select-label pt-0">
+                Search Type
+            </label>
+
+            <script type="text/javascript">
+                var searchTypeSelectElement = document.getElementById("search-type");
+                var searchTypeSelect = new mdb.Select(searchTypeSelectElement);
+
+                searchTypeSelectElement.addEventListener("valueChange.mdb.select", () => {
+                    document.dispatchEvent(new Event("reload-results"));
+                });
+            </script>
+        </div>
+    </div>
+
+    <ul id="list-results"></ul>
+{% endblock %}

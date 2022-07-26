@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="130px"
+     height="130px"
+     viewBox="0 0 66 66"
+     preserveAspectRatio="xMidYMid"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g>
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          values="0 33 33;270 33 33"
+                          begin="0s"
+                          dur="1.4s"
+                          fill="freeze"
+                          repeatCount="indefinite"></animateTransform>
+        <circle fill="none"
+                stroke-width="6"
+                stroke-linecap="round"
+                cx="33"
+                cy="33"
+                r="25"
+                stroke-dasharray="187"
+                stroke-dashoffset="610">
+            <animate attributeName="stroke"
+                     values="#4285F4;#4285F4"
+                     begin="0s"
+                     dur="5.6s"
+                     fill="freeze"
+                     repeatCount="indefinite"></animate>
+            <animateTransform attributeName="transform"
+                              type="rotate"
+                              values="0 33 33;135 33 33;450 33 33"
+                              begin="0s"
+                              dur="1.4s"
+                              fill="freeze"
+                              repeatCount="indefinite"></animateTransform>
+            <animate attributeName="stroke-dashoffset"
+                     values="187;46.75;187"
+                     begin="0s"
+                     dur="1.4s"
+                     fill="freeze"
+                     repeatCount="indefinite"></animate>
+        </circle>
+    </g>
+</svg>
